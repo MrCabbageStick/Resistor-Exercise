@@ -1,0 +1,64 @@
+.resistor{
+    --_bar-gap: 2rem;
+    --_bar-width: 4rem;
+
+    width: calc((var(--_bar-gap) + var(--_bar-width)) * 6);
+    height: 10rem;
+
+    padding-inline: var(--_bar-gap);
+
+    display: grid;
+    grid-template-columns: repeat(5, var(--_bar-width));
+    gap: var(--_bar-gap);
+
+    background-color: #999;
+}
+
+.resistor__bar__black{
+    background-color: #000;
+}
+
+.resistor__bar__brown{
+    background-color: #583711;
+}
+
+.resistor__bar__red{
+    background-color: #b90f0f;
+}
+
+.resistor__bar__orange{
+    background-color: #eb8a3c;
+}
+
+.resistor__bar__yellow{
+    background-color: #ebdb4f;
+}
+
+.resistor__bar__green{
+    background-color: #3e8b34;
+}
+
+.resistor__bar__blue{
+    background-color: #3b4de9;
+}
+
+.resistor__bar__violet{
+    background-color: #572983;
+}
+
+.resistor__bar__grey{
+    background-color: #474747;
+}
+
+.resistor__bar__white{
+    background-color: #fafafa;
+}
+
+.resistor__bar__gold{
+    background-color: #daa520;
+}
+
+.resistor__bar__silver{
+    background-color: #737a85;
+}
+
