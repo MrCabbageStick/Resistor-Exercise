@@ -45,6 +45,9 @@ function generateResistor(nBands){
 }
 
 
+const getRandomBarCount = () => 4 + Math.round(Math.random());
+
+
 ///// Event handling /////
 resistorForm.addEventListener("submit", e => {
     e.preventDefault();
@@ -71,7 +74,7 @@ resistorForm.addEventListener("submit", e => {
 
     setTimeout(() => infoElem.classList.remove("info--correct"), 2500);
 
-    generateResistor(5);
+    generateResistor(getRandomBarCount());
 })
 
 
@@ -100,4 +103,4 @@ function choice(array, nChoices){
 }
 
 
-generateResistor(5);
+generateResistor(getRandomBarCount());
