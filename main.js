@@ -31,7 +31,7 @@ const getColorBarHTML = (color) => {
     if(resistorColors.indexOf(color) === -1)
         return null;
 
-    return `<div class="resistor__bar resistor__bar__${color}"></div>`
+    return `<div class="resistor__bar resistor__bar--${color}">${color}</div>`
 }
 
 
@@ -54,7 +54,7 @@ resistorForm.addEventListener("submit", e => {
     if(guess === "")
         return;
 
-    guess = parseInt(guess);
+    guess = parseFloat(guess);
 
     if(guess !== currentResistorValue){
         infoElem.innerHTML = "WRONG";
@@ -63,6 +63,8 @@ resistorForm.addEventListener("submit", e => {
         setTimeout(() => infoElem.classList.remove("info--wrong"), 2500);
         return;
     }
+
+    resistorGuess.value = "";
 
     infoElem.innerHTML = "CORRECT";
     infoElem.classList.add("info--correct");
