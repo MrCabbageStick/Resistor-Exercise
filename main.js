@@ -8,6 +8,14 @@ const infoElem = document.querySelector("[js-info]");
 ///// Globals /////
 let currentResistorValue = null;
 
+const suffixMultiplierMap = new Map([
+    ['k', 1000],
+    ['K', 1000],
+    ['m', 1_000_000],
+    ['M', 1_000_000],
+]);
+const possibleSuffixes = Array.from(suffixMultiplierMap.keys());
+
 
 ///// Generation /////
 function generateResistorBars(nBands){
@@ -57,7 +65,7 @@ resistorForm.addEventListener("submit", e => {
     if(guess === "")
         return;
 
-    guess = parseFloat(guess);
+    guess = stringToNumber(guess);
 
     if(guess !== currentResistorValue){
         infoElem.innerHTML = "WRONG";
@@ -78,8 +86,36 @@ resistorForm.addEventListener("submit", e => {
 })
 
 
-///// TOOLS /////
+resistorGuess.addEventListener("keydown", checkGuessValue, { capture: true });
 
+function checkGuessValue(e){
+    let inputLength = resistorGuess.value.length;
+
+    let lastChar = null;
+
+    if(inputLength > 0)
+        lastChar = resistorGuess.value[resistorGuess.value.length - 1];
+    
+    if(
+        e.key === "Backspace" // Allow backspace
+        || e.key === "Enter" // Allow Enter
+        || e.key === "." // Allow dot
+        || (!isNaN(parseInt(e.key)) && (lastChar === null || !isNaN(parseInt(lastChar)))) // Allow numbers but not after suffix
+        || (possibleSuffixes.indexOf(e.key) !== -1 && !isNaN(parseInt(lastChar))) // Allow suffixes but only after numbers
+    )
+        return;
+
+    console.log("preventing");
+
+    e.preventDefault();
+
+    if(inputLength === 0){
+        setTimeout(() => resistorGuess.value = '', 1);
+    }
+}
+
+
+///// TOOLS /////
 function choice(array, nChoices){
     if(!(array instanceof Array) || array.length < nChoices || nChoices < 0)
         return [];
@@ -88,8 +124,6 @@ function choice(array, nChoices){
     let choice = [];
 
     while(indices.length < nChoices){
-        console.log("Random guess");
-        
         let randomIndex = Math.floor(Math.random() * array.length);
 
         if(indices.indexOf(randomIndex) !== -1)
@@ -101,6 +135,12 @@ function choice(array, nChoices){
 
     return choice;
 }
+
+
+const stringToNumber = (string) => 
+    possibleSuffixes.indexOf(string[string.length - 1]) == -1
+    ? parseFloat(string)
+    : parseFloat(string.slice(0, -1)) * suffixMultiplierMap.get(string[string.length - 1])
 
 
 generateResistor(getRandomBarCount());
