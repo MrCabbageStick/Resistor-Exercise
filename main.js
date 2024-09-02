@@ -13,6 +13,8 @@ const suffixMultiplierMap = new Map([
     ['K', 1000],
     ['m', 1_000_000],
     ['M', 1_000_000],
+    ["g", 1_000_000_000],
+    ["G", 1_000_000_000],
 ]);
 const possibleSuffixes = Array.from(suffixMultiplierMap.keys());
 
