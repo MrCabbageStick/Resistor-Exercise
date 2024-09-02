@@ -67,7 +67,7 @@ resistorForm.addEventListener("submit", e => {
 
     guess = stringToNumber(guess);
 
-    if(guess !== currentResistorValue){
+    if(!compareFloats(guess, currentResistorValue, 3)){
         infoElem.innerHTML = "WRONG";
         infoElem.classList.add("info--wrong");
 
@@ -100,12 +100,13 @@ function checkGuessValue(e){
         e.key === "Backspace" // Allow backspace
         || e.key === "Enter" // Allow Enter
         || e.key === "." // Allow dot
-        || (!isNaN(parseInt(e.key)) && (lastChar === null || !isNaN(parseInt(lastChar)))) // Allow numbers but not after suffix
+        || e.key.slice(0, 5) === "Arrow"
+        || (!isNaN(parseInt(e.key)) && (lastChar === null || !isNaN(parseInt(lastChar) || lastChar === '.'))) // Allow numbers but not after suffix
         || (possibleSuffixes.indexOf(e.key) !== -1 && !isNaN(parseInt(lastChar))) // Allow suffixes but only after numbers
     )
         return;
 
-    console.log("preventing");
+    // console.log(e.key.slice(0, 5));
 
     e.preventDefault();
 
@@ -142,5 +143,8 @@ const stringToNumber = (string) =>
     ? parseFloat(string)
     : parseFloat(string.slice(0, -1)) * suffixMultiplierMap.get(string[string.length - 1])
 
+
+const compareFloats = (float1, float2, precision) => 
+    Math.round(float1 * Math.pow(10, precision)) / Math.pow(10, precision) === Math.round(float2 * Math.pow(10, precision)) / Math.pow(10, precision)
 
 generateResistor(getRandomBarCount());
