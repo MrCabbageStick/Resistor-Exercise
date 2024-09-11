@@ -1,0 +1,151 @@
+:root {
+    /* COLORS */
+    --clr-purple-400: #9e45c1;
+    --clr-orange-400: #db962d;
+    --clr-green-400: #29bb66;
+}
+
+html {
+    /* Font stack source: https://modernfontstacks.com/ */
+    font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+    color: white;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-image: linear-gradient(to bottom right,
+            var(--clr-orange-400),
+            var(--clr-purple-400));
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.content {
+    width: min(60rem, 100%);
+    min-height: 20rem;
+
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2fr 1fr;
+}
+
+.game-screen {
+    display: grid;
+    grid-template-rows: auto 3rem;
+
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+.game-stats {
+    list-style-type: none;
+    padding: 0 !important;
+}
+
+.game-input {
+    display: grid;
+    grid-template-columns: 15rem 5rem 5rem;
+    gap: 1rem;
+}
+
+.game-settings {
+    height: 95%;
+
+    display: grid;
+    grid-auto-rows: min-content;
+    gap: .5rem;
+}
+
+.game-settings__label {
+    text-transform: uppercase;
+
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.game-settings__entry {
+    display: grid;
+}
+
+input,
+button {
+    border: none;
+}
+
+button {
+    cursor: pointer;
+
+    border-radius: .5rem;
+    background-color: white;
+
+    color: black;
+
+    box-shadow:
+        0 0 0 .25rem #000,
+        inset 0 0 0 .1rem #0003;
+}
+
+button:focus-visible {
+    outline: .25rem solid var(--clr-green-400);
+}
+
+input[type="text"],
+input[type="number"] {
+    background-color: #0003;
+
+    border-radius: .5rem;
+    outline: .25rem solid white;
+
+    padding: .5rem;
+
+    height: 2rem;
+}
+
+input[type="text"]:focus-visible,
+input[type="number"]:focus-visible {
+    outline-color: var(--clr-green-400);
+}
+
+.input--hidden {
+    display: none;
+}
+
+.checkbox {
+    width: 1rem;
+    height: 1rem;
+
+    border-radius: 50%;
+
+    background-color: #0006;
+
+    outline: .05rem solid #000;
+
+    display: grid;
+    place-content: center;
+}
+
+.checkbox::after {
+    content: '✓';
+
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    background-color: var(--clr-green-400);
+
+    color: white;
+}
+
+.checkbox:has(input:checked)::after {
+    width: 100%;
+    height: 100%;
+}

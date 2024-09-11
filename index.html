@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resistor the Game</title>
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/resistor.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <main class="content">
+
+        <div class="game-screen">
+
+            <div class="resistor resistor--5-bar resistor--body-standard resistor--no-labels">
+                <div class="resistor__bar--black"></div>
+                <div class="resistor__bar--black"></div>
+                <div class="resistor__bar--black"></div>
+                <div class="resistor__bar--black"></div>
+                <div class="resistor__bar--black"></div>
+            </div>
+
+            <form action="#" class="game-input" js-user-input-form>
+
+                <input type="text" name="resistance" js-input-resistance>
+                <input type="number" name="tolerance" js-input-tolerance>
+
+                <button>CHECK</button>
+
+            </form>
+
+        </div>
+
+        <div class="game-additions">
+
+            <ul class="game-stats">
+                <li class="game-stats__entry">Current combo: <span js-stat-current-combo></span></li>
+                <li class="game-stats__entry">Best combo: <span js-stat-best-combo></span></li>
+                <li class="game-stats__entry">Best time: <span js-stat-best-time></span></li>
+            </ul>
+
+            <p class="game-settings__label">SETTINGS</p>
+
+            <form class="game-settings" action="#" js-game-settings>
+
+                <label for="enable-tolerance" class="game-settings__entry">
+                    Enable tolerance:
+                    <div class="checkbox">
+                        <input type="checkbox" name="enable-tolerance" class="input--hidden" js-enable-tolerance>
+                    </div>
+                </label>
+
+                <label for="enable-labels" class="game-settings__entry">
+                    Enable bar labels:
+                    <input type="checkbox" name="enable-labels" js-enable-labels>
+                </label>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+:root {
+    /* COLORS */
+    --clr-resistor-body-orange: #d1a684;
+
+    --clr-resistor-leads: #636363;
+}
+
+
+/**** RESISTOR BODY ****/
+
+.resistor {
+    --_bar-gap: 2rem;
+    --_bar-width: 2rem;
+    --_n-bars: 4;
+
+    --_clr-label: white;
+    --_label-shadow: 0 0 .5rem black;
+
+    width: calc((var(--_bar-gap) + var(--_bar-width)) * (var(--_n-bars) + 3));
+    height: 10rem;
+
+    padding-inline: var(--_bar-gap);
+
+    display: grid;
+    grid-template-columns: repeat(5, var(--_bar-width));
+    gap: var(--_bar-gap);
+
+    background-color: #999;
+
+    isolation: isolate;
+
+    position: relative;
+}
+
+.resistor::before {
+    /* content: ''; */
+
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 200%;
+    height: .5rem;
+
+    /* ( .5 * height ) */
+    border-radius: .25rem;
+
+    background-color: var(--clr-resistor-leads);
+}
+
+.resistor--5bar {
+    --_n-bars: 5;
+}
+
+.resistor--body-standard {
+    background-color: var(--clr-resistor-body-orange);
+
+    clip-path: polygon(0 0, 20% 0, 20% 10%, 80% 10%, 80% 0, 100% 0, 100% 100%, 80% 100%, 80% 90%, 20% 90%, 20% 100%, 0 100%);
+}
+
+.resistor--no-labels {
+    --_clr-label: transparent;
+    --_label-shadow: none;
+}
+
+
+/**** RESISTOR BARS ****/
+
+.resistor__bar {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+
+    display: grid;
+    place-content: center;
+
+    text-transform: uppercase;
+
+    color: var(--_clr-label);
+    text-shadow: var(--_label-shadow);
+
+    font-weight: bold;
+}
+
+.resistor__bar--black {
+    background-color: #000;
+}
+
+.resistor__bar--brown {
+    background-color: #583711;
+}
+
+.resistor__bar--red {
+    background-color: #b90f0f;
+}
+
+.resistor__bar--orange {
+    background-color: #eb8a3c;
+}
+
+.resistor__bar--yellow {
+    background-color: #ebdb4f;
+}
+
+.resistor__bar--green {
+    background-color: #3e8b34;
+}
+
+.resistor__bar--blue {
+    background-color: #3b4de9;
+}
+
+.resistor__bar--violet {
+    background-color: #572983;
+}
+
+.resistor__bar--grey {
+    background-color: #474747;
+}
+
+.resistor__bar--white {
+    background-color: #fafafa;
+}
+
+.resistor__bar--gold {
+    background-color: #daa520;
+}
+
+.resistor__bar--silver {
+    background-color: #737a85;
+}
