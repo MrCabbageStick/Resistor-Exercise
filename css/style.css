@@ -3,12 +3,7 @@
     --clr-purple-400: #9e45c1;
     --clr-orange-400: #db962d;
     --clr-green-400: #29bb66;
-}
-
-html {
-    /* Font stack source: https://modernfontstacks.com/ */
-    font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
-    color: white;
+    --clr-green-500: #2c9759;
 }
 
 html,
@@ -24,56 +19,83 @@ body {
     display: grid;
     align-items: center;
     justify-items: center;
+
+    /* Font stack source: https://modernfontstacks.com/ */
+    font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+    color: white;
 }
 
 .content {
-    width: min(60rem, 100%);
+    width: min(50rem, 90%);
     min-height: 20rem;
-
-    display: grid;
-    align-items: center;
-    grid-template-columns: 2fr 1fr;
 }
 
 .game-screen {
     display: grid;
-    grid-template-rows: auto 3rem;
+    grid-template-rows: auto min-content;
+    grid-template-columns: auto auto;
+    gap: 1rem;
 
-    justify-content: center;
+    justify-items: center;
     align-items: center;
 
     height: 100%;
     width: 100%;
-}
 
-.game-stats {
-    list-style-type: none;
-    padding: 0 !important;
+    background-color: #0002;
+
+    outline: .25rem solid #3337;
+    border-top: .25rem solid #fff6;
+
+    border-radius: .5rem;
+
+    padding: 1rem;
 }
 
 .game-input {
     display: grid;
     grid-template-columns: 15rem 5rem 5rem;
     gap: 1rem;
+
+    grid-row: 2;
+
+    align-self: stretch;
 }
 
-.game-settings {
-    height: 95%;
-
+.game-additions {
     display: grid;
-    grid-auto-rows: min-content;
+    grid-template-columns: auto min-content;
     gap: .5rem;
+
+    justify-self: end;
+
+    grid-row: 1 / -1;
+
+    outline: .25rem solid#3335;
+
+    border-radius: .5rem;
+
+    padding: 1rem;
 }
 
-.game-settings__label {
+.game-additions__label {
     text-transform: uppercase;
 
     font-weight: bold;
     font-size: 1.5rem;
+
+    grid-column: 1 / -1;
 }
 
-.game-settings__entry {
+.game-additions__entry {
     display: grid;
+    grid-template-columns: subgrid;
+
+    padding: .25rem;
+
+    cursor: pointer;
+
+    grid-column: 1 / -1;
 }
 
 input,
@@ -85,13 +107,16 @@ button {
     cursor: pointer;
 
     border-radius: .5rem;
-    background-color: white;
+    background-color: var(--clr-green-400);
 
-    color: black;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
 
-    box-shadow:
-        0 0 0 .25rem #000,
-        inset 0 0 0 .1rem #0003;
+    display: grid;
+    align-content: center;
+
+    border: .25rem solid var(--clr-green-500);
 }
 
 button:focus-visible {
@@ -120,8 +145,8 @@ input[type="number"]:focus-visible {
 }
 
 .checkbox {
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
 
     border-radius: 50%;
 
@@ -130,22 +155,25 @@ input[type="number"]:focus-visible {
     outline: .05rem solid #000;
 
     display: grid;
-    place-content: center;
+    place-items: center;
+
+    position: relative;
 }
 
 .checkbox::after {
-    content: '✓';
-
+    content: '';
     position: absolute;
-    width: 0;
-    height: 0;
 
-    background-color: var(--clr-green-400);
+    width: 60%;
+    height: 60%;
 
-    color: white;
+    background-color: transparent;
+
+    clip-path: polygon(41% 74%, 76% 0, 100% 14%, 57% 100%, 25% 100%, 0% 60%, 22% 45%);
+
+    transition: background-color .25s;
 }
 
 .checkbox:has(input:checked)::after {
-    width: 100%;
-    height: 100%;
+    background-color: white;
 }

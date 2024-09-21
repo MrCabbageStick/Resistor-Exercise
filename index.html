@@ -34,33 +34,31 @@
 
             </form>
 
-        </div>
+            <div class="game-additions">
 
-        <div class="game-additions">
+                <p class="game-additions__label">STATS</p>
 
-            <ul class="game-stats">
-                <li class="game-stats__entry">Current combo: <span js-stat-current-combo></span></li>
-                <li class="game-stats__entry">Best combo: <span js-stat-best-combo></span></li>
-                <li class="game-stats__entry">Best time: <span js-stat-best-time></span></li>
-            </ul>
+                <p class="game-additions__entry">Current combo: <span js-stat-current-combo>0</span></p>
+                <p class="game-additions__entry">Best combo: <span js-stat-best-combo>0</span></p>
+                <p class="game-additions__entry">Best time: <span js-stat-best-time>0</span></p>
 
-            <p class="game-settings__label">SETTINGS</p>
+                <p class="game-additions__label">SETTINGS</p>
 
-            <form class="game-settings" action="#" js-game-settings>
-
-                <label for="enable-tolerance" class="game-settings__entry">
+                <label class="game-additions__entry">
                     Enable tolerance:
                     <div class="checkbox">
                         <input type="checkbox" name="enable-tolerance" class="input--hidden" js-enable-tolerance>
                     </div>
                 </label>
 
-                <label for="enable-labels" class="game-settings__entry">
+                <label class="game-additions__entry">
                     Enable bar labels:
-                    <input type="checkbox" name="enable-labels" js-enable-labels>
+                    <div class="checkbox">
+                        <input type="checkbox" name="enable-labels" class="input--hidden" js-enable-labels>
+                    </div>
                 </label>
 
-            </form>
+            </div>
 
         </div>
 
