@@ -13,52 +13,48 @@
 
 <body>
 
-    <main class="content">
+    <main class="game-screen">
 
-        <div class="game-screen">
+        <div class="resistor resistor--5-bar resistor--body-standard resistor--no-labels">
+            <div class="resistor__bar--black"></div>
+            <div class="resistor__bar--black"></div>
+            <div class="resistor__bar--black"></div>
+            <div class="resistor__bar--black"></div>
+            <div class="resistor__bar--black"></div>
+        </div>
 
-            <div class="resistor resistor--5-bar resistor--body-standard resistor--no-labels">
-                <div class="resistor__bar--black"></div>
-                <div class="resistor__bar--black"></div>
-                <div class="resistor__bar--black"></div>
-                <div class="resistor__bar--black"></div>
-                <div class="resistor__bar--black"></div>
-            </div>
+        <form action="#" class="game-input" js-user-input-form>
 
-            <form action="#" class="game-input" js-user-input-form>
+            <input type="text" name="resistance" js-input-resistance>
+            <input type="number" name="tolerance" js-input-tolerance>
 
-                <input type="text" name="resistance" js-input-resistance>
-                <input type="number" name="tolerance" js-input-tolerance>
+            <button>CHECK</button>
 
-                <button>CHECK</button>
+        </form>
 
-            </form>
+        <div class="game-additions">
 
-            <div class="game-additions">
+            <p class="game-additions__label">STATS</p>
 
-                <p class="game-additions__label">STATS</p>
+            <p class="game-additions__entry">Current combo: <span js-stat-current-combo>0</span></p>
+            <p class="game-additions__entry">Best combo: <span js-stat-best-combo>0</span></p>
+            <p class="game-additions__entry">Best time: <span js-stat-best-time>0</span></p>
 
-                <p class="game-additions__entry">Current combo: <span js-stat-current-combo>0</span></p>
-                <p class="game-additions__entry">Best combo: <span js-stat-best-combo>0</span></p>
-                <p class="game-additions__entry">Best time: <span js-stat-best-time>0</span></p>
+            <p class="game-additions__label">SETTINGS</p>
 
-                <p class="game-additions__label">SETTINGS</p>
+            <label class="game-additions__entry">
+                Enable tolerance:
+                <div class="checkbox">
+                    <input type="checkbox" name="enable-tolerance" class="input--hidden" js-enable-tolerance>
+                </div>
+            </label>
 
-                <label class="game-additions__entry">
-                    Enable tolerance:
-                    <div class="checkbox">
-                        <input type="checkbox" name="enable-tolerance" class="input--hidden" js-enable-tolerance>
-                    </div>
-                </label>
-
-                <label class="game-additions__entry">
-                    Enable bar labels:
-                    <div class="checkbox">
-                        <input type="checkbox" name="enable-labels" class="input--hidden" js-enable-labels>
-                    </div>
-                </label>
-
-            </div>
+            <label class="game-additions__entry">
+                Enable bar labels:
+                <div class="checkbox">
+                    <input type="checkbox" name="enable-labels" class="input--hidden" js-enable-labels>
+                </div>
+            </label>
 
         </div>
 
